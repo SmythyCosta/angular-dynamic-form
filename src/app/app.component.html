@@ -1,0 +1,39 @@
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+  <div *ngFor="let field of formFields">
+      <div *ngIf="field.type === 'number'">
+        <label for="{{field.fieldFrontDisplay}}">{{field.fieldFrontDisplay}}: </label>
+        <input type="number" [formControlName]="field.fieldModel" placeholder="{{field.fieldModel}}">
+        <div *ngIf="dynamicForm.get(field.fieldModel)?.errors">
+          <span *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['required']">{{getValidationMessage(field, 'required')}}</span>
+          <span *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['max']">{{getValidationMessage(field, 'max')}}</span>
+          <div *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['min']">{{getValidationMessage(field, 'min')}}</div>
+        </div>
+      </div> <p></p>
+      <div *ngIf="field.type === 'input'">
+        <label for="{{field.fieldFrontDisplay}}">{{field.fieldFrontDisplay}}</label>
+        <input type="text" [formControlName]="field.fieldModel" placeholder="{{field.fieldModel}}">
+        <div *ngIf="dynamicForm.get(field.fieldModel)?.errors">
+          <span *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['required']">{{getValidationMessage(field, 'required')}}</span>
+          <span *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['max']">{{getValidationMessage(field, 'max')}}</span>
+          <div *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['min']">{{getValidationMessage(field, 'min')}}</div>
+        </div> 
+      </div><p></p>
+      <div *ngIf="field.type === 'boolean'">
+        <label for="{{field.fieldFrontDisplay}}">{{field.fieldFrontDisplay}}</label>
+        <input type="checkbox" id="{{field.fieldModel}}" [formControlName]="field.fieldModel">
+         <div *ngIf="dynamicForm.get(field.fieldModel)?.errors">
+          <span *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['requiredTrue']">{{getValidationMessage(field, 'requiredTrue')}}</span>
+        </div> 
+      </div><p></p>
+      <div *ngIf="field.type === 'radio'">
+        <label for="{{field.fieldFrontDisplay}}">{{field.fieldFrontDisplay}}</label>
+        <label *ngFor="let option of field.options">
+            <input type="radio" [formControlName]="field.fieldModel" [value]="option">{{option}}
+        </label>
+         <div *ngIf="dynamicForm.get(field.fieldModel)?.errors">
+          <span *ngIf="dynamicForm.get(field.fieldModel)?.errors?.['requiredTrue']">{{getValidationMessage(field, 'required')}}</span>
+        </div> 
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>

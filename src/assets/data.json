@@ -1,0 +1,94 @@
+[
+    {
+        "fieldFrontDisplay" : "Altura",
+        "fieldModel": "height",
+        "type": "number",
+        "order": 1,
+        "validations": [
+            {
+              "type": "required",
+              "message": "Height is required - Altura é obrigatório"
+            },
+            {
+              "type": "min",
+              "message": "No mínimo 2 digitos",
+              "value": 2
+            }
+        ]
+    },
+    {
+        "fieldFrontDisplay" : "Peso",
+        "fieldModel": "Weight",
+        "type": "number",
+        "order": 2,
+        "validations": [
+            {
+              "type": "required",
+              "message": "Weight is required - Peso é obrigatório"
+            },
+            {
+              "type": "max3digits",
+              "message": "Must be a number of 3 digits or less",
+              "value": true
+            }
+        ]
+    },
+    {
+        "fieldFrontDisplay" : "Primeiro Nome",
+        "fieldModel": "firstName",
+        "type": "input",
+        "order": 3,
+        "validations": [
+            { 
+                "type": "required", 
+                "message": "First name is required" 
+            },
+            { 
+                "type": "maxLength", 
+                "message": "First name cannot be more than 10 characters",
+                "value": 10
+            }
+        ]
+    },
+    {
+        "fieldFrontDisplay" : "Segundo Nome",
+        "fieldModel": "lastName",
+        "type": "input",
+        "order": 4,
+        "validations": [
+            { 
+                "type": "required", 
+                "message": "First name is required" },
+            { 
+                "type": "maxLength", 
+                "message": "First name cannot be more than 10 characters",
+                "value": 10
+            }
+        ]
+    },
+    {
+        "fieldFrontDisplay" : "Termos de contrato",
+        "fieldModel": "terms",
+        "type": "boolean",
+        "order": 5,
+        "validations": [
+            { 
+                "type": "requiredTrue", 
+                "message": "You must accept terms" 
+            }
+        ]
+    },
+    {
+        "fieldFrontDisplay" : "Sexo",
+        "fieldModel": "gender",
+        "type": "radio",
+        "order": 6,
+        "options": ["Male", "Female", "Others"],
+        "validations": [
+            { 
+                "type": "required", 
+                "message": "Gender is required" 
+            }
+        ]
+    }
+]
